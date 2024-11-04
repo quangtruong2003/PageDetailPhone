@@ -1,0 +1,21 @@
+.product-card {
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .mat-badge {
+    margin-bottom: 10px;
+  }
+  
+  .text-danger {
+    color: #f44336;
+  }
+  
+  .text-warning {
+    color: #ff9800;
+  }
+  

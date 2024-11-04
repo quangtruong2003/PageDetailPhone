@@ -1,0 +1,6 @@
+<owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let banner of banners">
+      <img [src]="banner.src" [alt]="banner.alt" class="d-block w-100">
+    </ng-template>
+  </owl-carousel-o>
+  

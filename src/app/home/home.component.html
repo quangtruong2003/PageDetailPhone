@@ -1,0 +1,90 @@
+<div class="overlay"></div>
+
+<mat-toolbar color="primary" [class.hidden]="isHeaderHidden" class="mat-elevation-z4">
+  <span class="navbar-brand" routerLink="/">Johness</span>
+  <span class="spacer"></span>
+  <nav>
+    <a mat-button routerLink="#iphoneCarousel">iPhone</a>
+    <a mat-button routerLink="#macCarousel">Mac</a>
+    <a mat-button routerLink="#ipadCarousel">iPad</a>
+    <a mat-button routerLink="#watchCarousel">Watch</a>
+    <a mat-button routerLink="#soundCarousel">Tai nghe, Loa</a>
+    <a mat-button routerLink="#accessCarousel">Phụ kiện</a>
+    <a mat-button routerLink="/LabTH">LabTH</a>
+  </nav>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="toggleSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/cart">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/login">
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="main-content">
+  <!-- Carousel Component -->
+  <app-carousel></app-carousel>
+
+  <!-- Sản phẩm nổi bật -->
+  <div class="container mt-5">
+    <h1 class="text-center" style="padding-top: 70px;">Sản phẩm nổi bật</h1>
+    <div class="row text-center" style="padding-top: 20px;">
+      <ul class="choose-cate list-inline d-flex justify-content-center flex-wrap">
+        <!-- Các danh mục sản phẩm -->
+        <li class="list-inline-item col-lg-2 col-md-4 col-sm-4 col-6">
+          <a routerLink="/iphone" class="d-block">
+            <div class="img-catesp">
+              <img src="assets/img/choose-cate/15pm.webp" alt="iPhone" class="img-fluid">
+            </div>
+            <span>iPhone</span>
+          </a>
+        </li>
+        <!-- Thêm các danh mục khác tương tự -->
+      </ul>
+    </div>
+  </div>
+
+  
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Họ và Tên</mat-label>
+      <input matInput name="name" required pattern="^[^\d]*$" [(ngModel)]="contact.name">
+      <mat-error *ngIf="contactForm.controls['name']?.invalid">
+        Vui lòng nhập họ và tên hợp lệ không có số.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" required [(ngModel)]="contact.email">
+      <mat-error *ngIf="contactForm.controls['email']?.invalid">
+        Vui lòng nhập địa chỉ email hợp lệ.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nội dung</mat-label>
+      <textarea matInput name="message" rows="4" minlength="20" required [(ngModel)]="contact.message"></textarea>
+      <mat-error *ngIf="contactForm.controls['message']?.invalid">
+        Vui lòng nhập nội dung có ít nhất 20 ký tự.
+      </mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
+  </form>
+  
+  <!-- Các Carousel cho từng danh mục sản phẩm -->
+  <app-product-carousel id="iphoneCarousel" category="iphone"></app-product-carousel>
+  <app-product-carousel id="macCarousel" category="mac"></app-product-carousel>
+  <app-product-carousel id="ipadCarousel" category="ipad"></app-product-carousel>
+  <app-product-carousel id="watchCarousel" category="watch"></app-product-carousel>
+  <app-product-carousel id="soundCarousel" category="sound"></app-product-carousel>
+  <app-product-carousel id="accessCarousel" category="access"></app-product-carousel>
+</div>
+
+<!-- Các phần khác như section, giới thiệu, thông tin liên hệ, footer sẽ được chuyển sang các component riêng biệt -->
+
+<app-footer></app-footer>

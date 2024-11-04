@@ -1,0 +1,10 @@
+.owl-carousel .owl-nav button {
+    background: transparent;
+    border: none;
+    color: white;
+  }
+  
+  .owl-carousel .owl-dots .owl-dot span {
+    background: white;
+  }
+  

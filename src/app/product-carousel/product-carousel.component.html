@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h2 class="text-center">{{ categoryName }}</h2>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let product of products">
+      <mat-card class="product-card" (click)="goToProductDetail(product)">
+        <mat-card-header>
+          <span [matBadge]="product.badge" matBadgeColor="warn"></span>
+        </mat-card-header>
+        <img mat-card-image [src]="product.image" [alt]="product.name">
+        <mat-card-content>
+          <h5>{{ product.name }}</h5>
+          <p>
+            <span class="text-danger">{{ product.price }}</span>
+            <s>{{ product.oldPrice }}</s>
+            <small class="text-muted">{{ product.discount }}</small>
+          </p>
+          <p class="text-warning">{{ product.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+  </owl-carousel-o>
+</div>
